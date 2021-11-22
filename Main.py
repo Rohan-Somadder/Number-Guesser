@@ -3,7 +3,7 @@ import random
 
 def Random_num():
     # Generates random number between 1 and 10
-    return random.randint(1, 10)
+    return random.randint(1, 9)
 
 
 def main():
@@ -12,20 +12,23 @@ def main():
     cont = True
     while cont:
         num = Random_num()
-        n = int(input("Enter a number : "))
+        n = int(input("\nEnter a number : "))
 
         if abs(n - num) <= 1:
-            print("You were very close try again!!!")
+            print("\nYou were very close try again!!!")
 
         elif n == num:
-            print("Correct!!! Wery well played.....")
+            print("\nCorrect!!! Wery well played.....")
 
         else:
-            print("Wrong guess , better luck next time!!!")
+            print(
+                f"\nWrong guess , the answer was {num} better luck next time!!!")
 
-        i = input("Do you want to play again ? (Y/N)")
+        i = input("\nDo you want to play again ? (Y/N)")
         if i.lower() == 'y':
             cont = True
+        else:
+            cont = False
 
 
 if __name__ == '__main__':
