@@ -1,3 +1,3 @@
 # Project on number guesser game
 - Pick a number between 1 - 9 (including) and see if you have guessed it correctly or not.....
-#### Have a good time plying !!!
+#### Have a good time playing !!!
