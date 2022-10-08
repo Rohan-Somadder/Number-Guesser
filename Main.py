@@ -1,7 +1,8 @@
+'''Main file of the program.'''
+
+
 import random
 import sys
-
-#! Error: None
 
 
 def random_num():
@@ -12,40 +13,47 @@ def random_num():
 
 
 class Player:
+    '''Class for the Player'''
     def __init__(self, nm) -> None:
         self.score = 0
         self.name = nm
 
     def update(self, score):
+        '''Updates the score'''
         self.score += score
 
     def ret_name(self):
+        '''Returns the name of player'''
         return self.name
 
     def ret_points(self):
+        '''Returns the points of player'''
         return self.score
 
 
-def calc(player, guess, no, s=0):
-    if guess == no:
+def calc(player, guess, number, case=0):
+    '''Logic'''
+    if guess == number:
         player.update(3)
         print("\nCorrect!!! Wery well played.....")
 
-    elif abs(guess - no) <= 1:
+    elif abs(guess - number) <= 1:
         print("\nYou were very close, try again!!!")
-        if s != 1:
+        if case != 1:
             try:
                 guess = int(input("\nEnter a number again : "))
             except ValueError:
                 print("\nYour input is not a number, try with a number only!!!")
-            calc(player, guess, no, 1)
+            calc(player, guess, number, 1)
 
     else:
-        print(f"\nWrong guess , the answer was {no} better luck next time!!!")
+        print(f"\nWrong guess , the answer was {number} better luck next time!!!")
 
 
-def menu(pls):
-
+def menu():
+    '''Menu'''
+    name = input("\nEnter your name : ")
+    pls = Player(name)
     while True:
         print(f"\nWelcome {name} to Number Guesser Game")
         print("-"*15, "Menu", "-"*15)
@@ -66,22 +74,22 @@ def menu(pls):
             sys.exit()
 
 
-def main(pl):
+def main(pls):
+    '''Main function'''
     cont = True
+    input_num = 0
     while cont:
-        num = random_num()
+        rand_num = random_num()
         try:
-            n = int(input("\nEnter a number : "))
+            input_num = int(input("\nEnter a number : "))
         except ValueError:
             print("\nYour input is not a number, try with a number only!!!")
-            menu(pl)
+            #menu(pl)
 
-        calc(pl, n, num)
+        calc(pls, input_num, rand_num)
         i = input("\nDo you want to play again ? (Y/N) :")
         cont = bool(i.lower() == 'y')
 
 
 if __name__ == "__main__":
-    name = input("\nEnter your name : ")
-    p = Player(name)
-    menu(p)
+    menu()
